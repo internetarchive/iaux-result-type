@@ -1,7 +1,7 @@
 {
-  "name": "@internetarchive/foundation",
+  "name": "@internetarchive/core",
   "version": "0.0.1-alpha.1",
-  "description": "Foundational classes and structures for use in other libraries.",
+  "description": "Core foundational classes and interfaces for use in other libraries.",
   "author": "Internet Archive",
   "license": "AGPL-3.0-only",
   "main": "dist/index.js",
