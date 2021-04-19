@@ -1,7 +1,7 @@
 {
-  "name": "@internetarchive/your-webcomponent",
-  "version": "0.0.0",
-  "description": "The Internet Archive Typescript WebComponent template. It is based on the @open-wc template.",
+  "name": "@internetarchive/foundation",
+  "version": "0.0.1-alpha.1",
+  "description": "Foundational classes and structures for use in other libraries.",
   "author": "Internet Archive",
   "license": "AGPL-3.0-only",
   "main": "dist/index.js",
@@ -21,8 +21,6 @@
     "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\""
   },
   "dependencies": {
-    "lit-element": "^2.2.1",
-    "lit-html": "^1.1.2"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^4.2.0",
@@ -35,6 +33,8 @@
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^6.11.0",
     "husky": "^1.0.0",
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2",
     "lint-staged": "^10.0.0",
     "madge": "^4.0.1",
     "prettier": "^2.0.4",

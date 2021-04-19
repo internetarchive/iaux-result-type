@@ -1,1 +1,1 @@
-export { YourWebComponent } from './src/your-webcomponent';
+export type { Result } from './src/result';
