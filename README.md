@@ -1,21 +1,38 @@
-[![Build Status](https://travis-ci.com/internetarchive/iaux-your-webcomponent.svg?branch=master)](https://travis-ci.com/internetarchive/iaux-your-webcomponent) [![codecov](https://codecov.io/gh/internetarchive/iaux-your-webcomponent/branch/master/graph/badge.svg)](https://codecov.io/gh/internetarchive/iaux-your-webcomponent)
+[![Build Status](https://github.com/internetarchive/iaux-core/actions/workflows/ci.yml/badge.svg?branch=main)) [![codecov](https://codecov.io/gh/internetarchive/iaux-core/branch/master/graph/badge.svg)](https://codecov.io/gh/internetarchive/iaux-core)
 
-# Internet Archive Typescript WebComponent Template
+# IAUX Core
 
-This is a base template for creating Typescript WebComponents. It is based off of the [Open WebComponents generator](https://open-wc.org/docs/development/generator/) with some IA-specific customizations and some development niceities.
+A set of low-level common libraries and interfaces.
 
 ## Usage
 
-1. Click the "Use this Template" button in GitHub to create a new repository based on this one.
-2. Clone your new repo and update the things below:
+### `Result`
 
-### Things to update in your copy
-1. Remove this section
-2. Search for the strings `your-webcomponent` and `YourWebComponent` and those are most of the spots that need to be updated.
-3. `README.md` (this file). Update the readme in general, but also the badge URLs
-4. `package.json` Update the name and description
-5. Rename the `your-webcomponent.ts` and its associated `.test` file
-6. Update `.travis.yml` with the proper secure key. See the [Travis docs](https://blog.travis-ci.com/2014-03-13-slack-notifications/) for more information.
+`Result` is a generic interface for returning a response with typesafe value and error handling.
+
+```js
+// success
+const result: Result<string, Error> = { success: 'foo' };
+
+// error
+enum FooErrorType {
+  networkError,
+  decodingError,
+}
+class FooError extends Error {
+  type?: FooErrorType;
+
+  constructor(type: FooErrorType) {
+    super();
+    this.type = type;
+  }
+}
+const result: Result<string, FooError> = {
+  error: new FooError(FooErrorType.decodingError),
+};
+expect(result.success).to.equal(undefined);
+expect(result.error?.type).to.equal(FooErrorType.decodingError);
+```
 
 ## Local Demo with `web-dev-server`
 ```bash
