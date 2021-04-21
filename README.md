@@ -1,8 +1,14 @@
-[![Build Status](https://github.com/internetarchive/iaux-core/actions/workflows/ci.yml/badge.svg?branch=main)) [![codecov](https://codecov.io/gh/internetarchive/iaux-core/branch/master/graph/badge.svg)](https://codecov.io/gh/internetarchive/iaux-core)
+[![Build Status](https://github.com/internetarchive/iaux-result-type/actions/workflows/ci.yml/badge.svg?branch=main)) [![codecov](https://codecov.io/gh/internetarchive/iaux-result-type/branch/master/graph/badge.svg)](https://codecov.io/gh/internetarchive/iaux-result-type)
 
-# IAUX Core
+# IAUX Result Type
 
-A set of low-level common libraries and interfaces.
+A generic Result interface for returning type-safe responses and errors.
+
+## Installation
+
+```
+> yarn add @internetarchive/result-type
+```
 
 ## Usage
 
@@ -11,14 +17,13 @@ A set of low-level common libraries and interfaces.
 `Result` is a generic interface for returning a response with typesafe value and error handling.
 
 ```js
-// success
-const result: Result<string, Error> = { success: 'foo' };
+import { Result } from '@internetarchive/result-type';
 
-// error
 enum FooErrorType {
   networkError,
   decodingError,
 }
+
 class FooError extends Error {
   type?: FooErrorType;
 
@@ -27,11 +32,32 @@ class FooError extends Error {
     this.type = type;
   }
 }
+
+// success
+const result: Result<string, FooError> = { success: 'foo' };
+
+const value = result.success;
+if (value) {
+  console.debug('do something with `value`');
+}
+
+// error
 const result: Result<string, FooError> = {
   error: new FooError(FooErrorType.decodingError),
 };
-expect(result.success).to.equal(undefined);
-expect(result.error?.type).to.equal(FooErrorType.decodingError);
+
+if (result.error) {
+  switch (result.error) {
+    case FooErrorType.networkError:
+      console.debug('handle network error');
+      break;
+    case FooErrorType.decodingError:
+      console.debug('handle decoding error');
+      break;
+    default:
+      console.debug('unknown error');
+  }
+}
 ```
 
 ## Local Demo with `web-dev-server`

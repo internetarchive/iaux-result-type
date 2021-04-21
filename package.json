@@ -1,7 +1,7 @@
 {
-  "name": "@internetarchive/core",
+  "name": "@internetarchive/result-type",
   "version": "0.0.1-alpha.1",
-  "description": "Core foundational classes and interfaces for use in other libraries.",
+  "description": "A generic Result interface for returning type-safe responses and errors.",
   "author": "Internet Archive",
   "license": "AGPL-3.0-only",
   "main": "dist/index.js",
