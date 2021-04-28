@@ -1,14 +1,9 @@
 import { html, css, LitElement, customElement } from 'lit-element';
-import '../src/your-webcomponent';
 
 @customElement('app-root')
 export class AppRoot extends LitElement {
   render() {
-    return html`
-      <your-webcomponent title="Hello">
-        <div slot="my-slot">Some LightDOM Content</div>
-      </your-webcomponent>
-    `;
+    return html` <h1>IAUX Result Type</h1> `;
   }
 
   static styles = css`
