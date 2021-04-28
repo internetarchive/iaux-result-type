@@ -27,8 +27,8 @@ enum FooErrorType {
 class FooError extends Error {
   type?: FooErrorType;
 
-  constructor(type: FooErrorType) {
-    super();
+  constructor(type: FooErrorType, message: string?) {
+    super(message);
     this.type = type;
   }
 }
