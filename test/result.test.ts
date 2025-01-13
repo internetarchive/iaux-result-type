@@ -11,7 +11,6 @@ describe('Result', () => {
   });
 
   it('can be initialized with an error', async () => {
-    // eslint-disable-next-line no-shadow
     enum FooErrorType {
       networkError,
       decodingError,
