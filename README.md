@@ -2,6 +2,8 @@
 
 # IAUX Result Type
 
+> Moved to [@internetarchive/elements](https://github.com/internetarchive/elements) (`src/services/result-type`). New work goes there.
+
 A generic Result interface for returning type-safe responses and errors.
 
 ## Installation
